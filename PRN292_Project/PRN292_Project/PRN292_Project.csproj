@@ -57,6 +57,7 @@
     <Content Include="frmAdminHome.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmSignin.aspx" />
+    <Content Include="frmUserHome.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +88,13 @@
     </Compile>
     <Compile Include="frmSignin.aspx.designer.cs">
       <DependentUpon>frmSignin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserHome.aspx.cs">
+      <DependentUpon>frmUserHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserHome.aspx.designer.cs">
+      <DependentUpon>frmUserHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

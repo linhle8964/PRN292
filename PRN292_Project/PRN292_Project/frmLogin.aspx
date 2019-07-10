@@ -28,7 +28,8 @@
                     <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
                 </td>
                 <td>
-                    <input id="txtPass" type="password" /></td>
+                    <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>
+                </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -45,11 +46,19 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="btnLogin" runat="server" Text="Log In" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Log In" OnClick="btnLogin_Click" />
                 </td>
                 <td>
                     <asp:Button ID="btnSignin" runat="server" Text="Sign In" />
                 </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="lblShow" runat="server"></asp:Label>
+                </td>
+                <td>
+                    &nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>

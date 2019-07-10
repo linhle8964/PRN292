@@ -1,0 +1,6 @@
+C:\Users\admin\Documents\GitHub\PRN292\PRN292_Project\PRN292_Project\bin\PRN292_Project.dll.config
+C:\Users\admin\Documents\GitHub\PRN292\PRN292_Project\PRN292_Project\bin\PRN292_Project.dll
+C:\Users\admin\Documents\GitHub\PRN292\PRN292_Project\PRN292_Project\bin\PRN292_Project.pdb
+C:\Users\admin\Documents\GitHub\PRN292\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.csprojResolveAssemblyReference.cache
+C:\Users\admin\Documents\GitHub\PRN292\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.dll
+C:\Users\admin\Documents\GitHub\PRN292\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.pdb
