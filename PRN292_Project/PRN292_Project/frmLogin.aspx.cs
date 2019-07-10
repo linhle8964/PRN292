@@ -23,7 +23,7 @@ namespace PRN292_Project
             
 
              SqlConnection con = new SqlConnection(connStr);
-            SqlCommand cmd = new SqlCommand("select * from Users where ID = @username and Password = @word and Type = @role", con);
+            SqlCommand cmd = new SqlCommand("select * from Users where UserID = @username and Password = @word and Type = @role", con);
             cmd.Parameters.AddWithValue("@username", txtUsername.Text);
             cmd.Parameters.AddWithValue("@word", txtPass.Text);
             cmd.Parameters.AddWithValue("@role", DropDownList1.SelectedValue);
