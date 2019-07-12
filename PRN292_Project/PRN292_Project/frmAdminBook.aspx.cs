@@ -52,17 +52,33 @@ namespace PRN292_Project
 
         protected void btnDetail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmAdminChapter.aspx");
+            //Lấy button sử dụng event
+            Button btn = (Button)sender;
+
+            //Lấy hàng có chứa dữ liệu của nút đã bấm
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            //lấy book id
+            string bookid = gvr.Cells[0].Text;
+            Response.Redirect("frmAdminChapter.aspx?id="+bookid);
         }
 
         protected void btnAddBook_Click(object sender, EventArgs e)
         {
+
             Response.Redirect("frmAdminBookAdd.aspx");
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmAdminBookEdit.aspx");
+            //Lấy button sử dụng event
+            Button btn = (Button)sender;
+
+            //Lấy hàng có chứa dữ liệu của nút đã bấm
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            //lấy book id
+            string bookid = gvr.Cells[0].Text;
+            // forward sang trang edit cùng với book id(đã lấy ở trên) đi kèm
+            Response.Redirect("frmAdminBookEdit.aspx?id=" + bookid);
         }
     }
 }
