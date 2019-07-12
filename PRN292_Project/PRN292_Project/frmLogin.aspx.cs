@@ -38,7 +38,7 @@ namespace PRN292_Project
                 if(string.Compare(DropDownList1.SelectedValue,"Admin") == 0)
                 {
                     Session["id"] = txtUsername.Text;
-                    Response.Redirect("frmAdminHome.aspx");
+                    Response.Redirect("frmAdminBook.aspx");
                     Session.RemoveAll();
                 }else
                 {
