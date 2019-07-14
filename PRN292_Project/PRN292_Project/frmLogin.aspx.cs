@@ -37,12 +37,12 @@ namespace PRN292_Project
             {
                 if(string.Compare(DropDownList1.SelectedValue,"Admin") == 0)
                 {
-                    Session["id"] = txtUsername.Text;
+                    Session["userid"] = txtUsername.Text;
                     Response.Redirect("frmAdminBook.aspx");
                     Session.RemoveAll();
                 }else
                 {
-                    Session["id"] = txtUsername.Text;
+                    Session["userid"] = txtUsername.Text;
                     Response.Redirect("frmUserHome.aspx");
                     Session.RemoveAll();
                 }

@@ -12,7 +12,7 @@ namespace PRN292_Project
 {
     public partial class frmAdminBookEdit : System.Web.UI.Page
     {
-        string categoryId = "";
+        
         string connStr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -51,55 +51,32 @@ namespace PRN292_Project
 
         }
         
-        protected void GridViewCategoryList_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            categoryId = GridViewCategoryList.Rows[e.NewSelectedIndex].Cells[1].Text;
-            //luu category vao label
-                Label11.Text = categoryId;
-        }
+    
         protected void btnAddCategory_Click(object sender, EventArgs e)
         {
             // Viết hàm add Category vào đây
+
+            //Lấy button sử dụng event
+            Button btn = (Button)sender;
+
+            //Lấy hàng có chứa dữ liệu của nút đã bấm
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            string categoryid = gvr.Cells[0].Text;
+            // còn lại tự làm
+
             SqlConnection con = new SqlConnection(connStr);
             SqlCommand cmd1 = new SqlCommand("insert into Book_Category values('"
                + lblBookID.Text + "','"
-                 + Label11.Text + "')", con);
+                 + categoryid + "')", con);
 
             con.Open();
             cmd1.ExecuteNonQuery();
             con.Close();
             load_data();
-            //Lấy button sử dụng event
-           // Button btn = (Button)sender;
-
-            //Lấy hàng có chứa dữ liệu của nút đã bấm
-            //GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-
-            // còn lại tự làm
 
         }
-        protected void GridViewBookCategory_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            categoryId = GridViewBookCategory.Rows[e.NewSelectedIndex].Cells[2].Text;
-            //luu category vao label
-            Label11.Text = categoryId;
-        }
-        protected void GridViewBookCategory_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-           
-            using (SqlConnection connection = new SqlConnection(connStr))
-            {
-                using (SqlCommand command = new SqlCommand("DELETE FROM Book_category WHERE BookID = @BookID and CategoryID=@categoryID"))
-                {
-                    command.Parameters.AddWithValue("@BookID", int.Parse(lblBookID.Text));
-                    command.Parameters.AddWithValue("@categoryID", int.Parse(Label11.Text));
-                    command.Connection = connection;
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-            }
-            load_data();
-        }
+     
+
 
         protected void GridViewBookDetail_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -124,6 +101,25 @@ namespace PRN292_Project
         protected void GridViewBookDetail_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewBookDetail.EditIndex = e.NewEditIndex;
+            load_data();
+        }
+
+        protected void GridViewBookCategory_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string categoryid = GridViewBookCategory.Rows[e.RowIndex].Cells[1].Text;
+
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                using (SqlCommand command = new SqlCommand("DELETE FROM Book_category WHERE BookID = @BookID and CategoryID=@categoryID"))
+                {
+                    command.Parameters.AddWithValue("@BookID", int.Parse(lblBookID.Text));
+                    command.Parameters.AddWithValue("@categoryID", int.Parse(categoryid));
+                    command.Connection = connection;
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
             load_data();
         }
     }

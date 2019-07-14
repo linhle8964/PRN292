@@ -36,6 +36,8 @@ namespace PRN292_Project
             GridView1.DataSource = tb;
             GridView1.DataBind();
 
+            lblUsername.Text = Session["userid"].ToString();
+
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -79,6 +81,12 @@ namespace PRN292_Project
             string bookid = gvr.Cells[0].Text;
             // forward sang trang edit cùng với book id(đã lấy ở trên) đi kèm
             Response.Redirect("frmAdminBookEdit.aspx?id=" + bookid);
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("frmLogin.aspx");
         }
     }
 }

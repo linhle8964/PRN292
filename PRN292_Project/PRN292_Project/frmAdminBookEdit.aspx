@@ -19,7 +19,8 @@
 &nbsp;&nbsp;&nbsp;
         <br />
         <br />
-&nbsp;<asp:Label ID="lblBookID" runat="server"></asp:Label>
+&nbsp;<asp:Label ID="Label11" runat="server" Text="Book ID"></asp:Label>
+&nbsp;&nbsp;&nbsp; <asp:Label ID="lblBookID" runat="server"></asp:Label>
         &nbsp;&nbsp;
         <br />
         <br />
@@ -51,13 +52,15 @@
         <br />
         <br />
         <asp:Label ID="Label8" runat="server" Font-Bold="True" Font-Italic="True" Text="Book Category"></asp:Label>
-        <asp:GridView ID="GridViewBookCategory" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" EnableModelValidation="True" ForeColor="Black" GridLines="None" PageSize="3" Width="700px" OnRowDeleting="GridViewBookCategory_RowDeleting" AutoGenerateSelectButton="True" OnSelectedIndexChanging="GridViewBookCategory_SelectedIndexChanging">
+        <br />
+        <br />
+        <asp:GridView ID="GridViewBookCategory" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" EnableModelValidation="True" ForeColor="Black" GridLines="None" PageSize="3" Width="697px" OnRowDeleting="GridViewBookCategory_RowDeleting">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
                 <asp:BoundField DataField="BookID" HeaderText="Book ID" />
-                <asp:BoundField DataField="CategoryID" HeaderText="Category ID" />
+                <asp:BoundField DataField="CategoryID" HeaderText="CategoryID" />
                 <asp:BoundField DataField="CategoryName" HeaderText="Category Name" />
-                <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" ButtonType="Button" />
+                <asp:CommandField ShowDeleteButton="True" />
             </Columns>
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />
@@ -65,15 +68,13 @@
             <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
         </asp:GridView>
         <br />
-        <asp:Label ID="Label11" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
         <asp:Label ID="Label7" runat="server" Text="Add Category"></asp:Label>
         <br />
         <asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Italic="True" Text="List Category"></asp:Label>
-        <asp:GridView ID="GridViewCategoryList" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="3" Width="700px" DataKeyNames="CategoryID" OnSelectedIndexChanging="GridViewCategoryList_SelectedIndexChanging">
+        <asp:GridView ID="GridViewCategoryList" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="3" Width="700px" DataKeyNames="CategoryID" >
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="CategoryID" HeaderText="CategoryID" />
                 <asp:BoundField DataField="CategoryName" HeaderText="Category" />
                 <asp:TemplateField HeaderText="Add Category">

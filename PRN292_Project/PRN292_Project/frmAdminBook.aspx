@@ -10,6 +10,14 @@
     <form id="form1" runat="server">
     <div style="height: 286px">
     
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblUsername" runat="server"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Log out" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <br />
+    
         <asp:Button ID="btnAddBook" runat="server" OnClick="btnAddBook_Click" Text="Add Book" />
         <br />
         <br />
@@ -23,7 +31,7 @@
                         <asp:Button ID="btnDetail" runat="server" OnClick="btnDetail_Click" Text="Detail" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" />
+                <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" ButtonType="Button" />
                 <asp:TemplateField HeaderText="Edit">
                     <ItemTemplate>
                         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
