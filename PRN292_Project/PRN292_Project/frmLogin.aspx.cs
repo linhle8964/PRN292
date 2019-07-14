@@ -23,7 +23,7 @@ namespace PRN292_Project
             
 
              SqlConnection con = new SqlConnection(connStr);
-            SqlCommand cmd = new SqlCommand("select * from Users where ID = @username and Password = @word and Type = @role", con);
+            SqlCommand cmd = new SqlCommand("select * from Users where UserID = @username and Password = @word and Type = @role", con);
             cmd.Parameters.AddWithValue("@username", txtUsername.Text);
             cmd.Parameters.AddWithValue("@word", txtPass.Text);
             cmd.Parameters.AddWithValue("@role", DropDownList1.SelectedValue);
@@ -38,7 +38,7 @@ namespace PRN292_Project
                 if(string.Compare(DropDownList1.SelectedValue,"Admin") == 0)
                 {
                     Session["id"] = txtUsername.Text;
-                    Response.Redirect("frmAdminHome.aspx");
+                    Response.Redirect("frmAdminBook.aspx");
                     Session.RemoveAll();
                 }else
                 {

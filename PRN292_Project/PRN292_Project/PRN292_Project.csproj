@@ -54,6 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="frmAdminBook.aspx" />
+    <Content Include="frmAdminBookAdd.aspx" />
+    <Content Include="frmAdminBookEdit.aspx" />
+    <Content Include="frmAdminChapter.aspx" />
+    <Content Include="frmAdminChapterAdd.aspx" />
+    <Content Include="frmAdminChapterEdit.aspx" />
     <Content Include="frmAdminHome.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmSignin.aspx" />
@@ -67,6 +72,41 @@
     </Compile>
     <Compile Include="frmAdminBook.aspx.designer.cs">
       <DependentUpon>frmAdminBook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminBookAdd.aspx.cs">
+      <DependentUpon>frmAdminBookAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmAdminBookAdd.aspx.designer.cs">
+      <DependentUpon>frmAdminBookAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminBookEdit.aspx.cs">
+      <DependentUpon>frmAdminBookEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmAdminBookEdit.aspx.designer.cs">
+      <DependentUpon>frmAdminBookEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminChapter.aspx.cs">
+      <DependentUpon>frmAdminChapter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmAdminChapter.aspx.designer.cs">
+      <DependentUpon>frmAdminChapter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminChapterAdd.aspx.cs">
+      <DependentUpon>frmAdminChapterAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmAdminChapterAdd.aspx.designer.cs">
+      <DependentUpon>frmAdminChapterAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminChapterEdit.aspx.cs">
+      <DependentUpon>frmAdminChapterEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmAdminChapterEdit.aspx.designer.cs">
+      <DependentUpon>frmAdminChapterEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmAdminHome.aspx.cs">
       <DependentUpon>frmAdminHome.aspx</DependentUpon>
