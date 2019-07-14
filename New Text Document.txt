@@ -1,0 +1,301 @@
+
+USE [master]
+GO
+/****** Object:  Database [PRN292_Assignment]    Script Date: 7/10/2019 9:19:10 PM ******/
+CREATE DATABASE [PRN292_Assignment]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'PRN292_Assignment', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\PRN292_Assignment.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'PRN292_Assignment_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\PRN292_Assignment_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [PRN292_Assignment] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [PRN292_Assignment].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [PRN292_Assignment] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [PRN292_Assignment] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [PRN292_Assignment] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [PRN292_Assignment] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [PRN292_Assignment] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET RECOVERY FULL 
+GO
+ALTER DATABASE [PRN292_Assignment] SET  MULTI_USER 
+GO
+ALTER DATABASE [PRN292_Assignment] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [PRN292_Assignment] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [PRN292_Assignment] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [PRN292_Assignment] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [PRN292_Assignment] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [PRN292_Assignment] SET QUERY_STORE = OFF
+GO
+USE [PRN292_Assignment]
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET IDENTITY_CACHE = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
+GO
+USE [PRN292_Assignment]
+GO
+/****** Object:  Table [dbo].[Book]    Script Date: 7/10/2019 9:19:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Book](
+	[BookID] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+	[Summary] [nvarchar](max) NOT NULL,
+	[Author] [nvarchar](50) NULL,
+	[Image] [nvarchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[BookID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Book_Category]    Script Date: 7/10/2019 9:19:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Book_Category](
+	[BookID] [int] NOT NULL,
+	[CategoryID] [int] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[BookRequest]    Script Date: 7/10/2019 9:19:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BookRequest](
+	[RequestID] [int] IDENTITY(1,1) NOT NULL,
+	[UserID] [nvarchar](50) NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+	[Content] [nvarchar](max) NULL,
+	[Status] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[RequestID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Category]    Script Date: 7/10/2019 9:19:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Category](
+	[CategoryID] [int] IDENTITY(1,1) NOT NULL,
+	[CategoryName] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Chapter]    Script Date: 7/10/2019 9:19:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Chapter](
+	[ChapterID] [int] IDENTITY(1,1) NOT NULL,
+	[BookID] [int] NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+	[Content] [nvarchar](max) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ChapterID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Comment]    Script Date: 7/10/2019 9:19:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Comment](
+	[CommentID] [int] IDENTITY(1,1) NOT NULL,
+	[UserID] [nvarchar](50) NOT NULL,
+	[BookID] [int] NOT NULL,
+	[Content] [nvarchar](max) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CommentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 7/10/2019 9:19:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[UserID] [nvarchar](50) NOT NULL,
+	[Email] [nvarchar](max) NOT NULL,
+	[Password] [nvarchar](max) NOT NULL,
+	[Address] [nvarchar](max) NOT NULL,
+	[Phone] [int] NOT NULL,
+	[Type] [nvarchar](50) NULL,
+	[Avatar] [nvarchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[VoteScore]    Script Date: 7/10/2019 9:19:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[VoteScore](
+	[VoteID] [int] IDENTITY(1,1) NOT NULL,
+	[UserID] [nvarchar](50) NOT NULL,
+	[BookID] [int] NOT NULL,
+	[Score] [float] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[VoteID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Book] ON 
+
+INSERT [dbo].[Book] ([BookID], [Title], [Summary], [Author], [Image]) VALUES (1, N'A Dance with Dragons', N'A Dance with Dragons is the fifth novel, of seven planned, in the epic fantasy series A Song of Ice and Fire by American author George R. R. Martin. In some areas, the paperback edition was published in two parts, titled Dreams and Dust and After the Feast. It was the first novel in the series to be published following the commencement of the HBO series adaptation, Game of Thrones, and runs to 1,040 pages with a word count of almost 415,000.', N'George R. R. Martin.', NULL)
+INSERT [dbo].[Book] ([BookID], [Title], [Summary], [Author], [Image]) VALUES (2, N'A Feast for Crows', N'A Feast for Crows is the fourth of seven planned novels in the epic fantasy series A Song of Ice and Fire by American author George R. R. Martin. The novel was first published on October 17, 2005, in the United Kingdom,[1] with a United States edition following on November 8, 2005', NULL, NULL)
+SET IDENTITY_INSERT [dbo].[Book] OFF
+SET IDENTITY_INSERT [dbo].[Chapter] ON 
+
+INSERT [dbo].[Chapter] ([ChapterID], [BookID], [Title], [Content]) VALUES (1, 1, N'Chapter 1:', N'Prologue in Oldtown
+Pate, a young apprentice at the Citadel in Oldtown, is studying to become a maester. He has stolen an important key to a depository of books and records at the request of a stranger in exchange for a reward; after turning over the key and receiving the reward, he dies abruptly from poison.
+
+King''s Landing
+Following the death and funeral of Tywin Lannister, Cersei''s reign is marked by rampant cronyism, and her councils staffed with incompetent loyalists. She also disregards accurate advice by her uncle Kevan Lannister and her brother Jaime, alienating them both. Making matters worse is Cersei''s increasing distrust of the Tyrells, particularly Margaery, whom Cersei implicates in a prophecy that Cersei herself will see her children crowned but all of them will die before her.
+
+Her incompetent management raises the kingdom''s debts to the Iron Bank of Braavos and the Faith of the Seven. When Cersei dismisses its representatives, the Iron Bank refuses to grant new loans and demands immediate repayment, nearly crippling the economy of Westeros. To settle the crown''s debts to the Faith of the Seven, Cersei permits the restoration of that religion''s military order, the Faith Militant, ignoring the danger to her own power. Hoping to weaken the Tyrells, Cersei dispatches Ser Loras Tyrell to besiege Stannis Baratheon''s forces on Dragonstone; as a result, almost a thousand loyalists are killed, and Ser Loras is gravely injured. A scheme to falsely have the Faith put Margaery on trial for adultery backfires when the religious leadership imprisons Cersei herself on similar (correct) charges.
+
+Riverlands
+After a series of disagreements, Cersei dispatches Jaime to the Riverlands to re-establish control. He negotiates with Brynden "the Blackfish" Tully to surrender Riverrun in exchange for Edmure Tully''s life, Riverrun having been granted to Walder Frey''s second son Emmon, who is married to Tywin''s sister Genna Lannister. Though the siege ends bloodlessly, Brynden escapes, to Jaime''s fury. Jaime also finds that Walder Frey''s grandson and heir, Ryman Frey, was hanged by the Brotherhood without Banners. He then receives word that Cersei, who has been imprisoned, wants him to defend her in a trial by combat; but learns that Tyrion''s accusation of Lancel Lannister and Cersei was true (Lancel having been King Robert''s true killer). Disgusted by the excessive loss of life and Cersei''s paranoia, Jaime abandons her to her fate.
+
+Brienne of Tarth''s quest for Sansa leads her all over the Riverlands, where she observes the destruction caused by the war, and acquires Podrick Payne, former squire to Tyrion Lannister. She meets Ser Hyle, a knight whom she has met before, and Lord Randyll Tarly (Samwell''s father), who insults her despite Ser Hyle''s praise of her. Eventually she is captured by the Brotherhood Without Banners and sentenced to death by Catelyn Stark, who was resurrected three days after death by Beric Dondarrion, though at the cost of Dondarrion''s life, and who has now assumed the name Lady Stoneheart. Catelyn offers to let her live if she agrees to kill Jaime Lannister (whom she believes played a role in Robb''s death). When Brienne refuses to decide, she and some of her companions are sentenced to be hanged, at which she screams an undisclosed word. The author later revealed that the word was "sword", in response to Catelyn''s ultimatum of "Sword or noose", which offered either Brienne''s continued service to Catelyn herself, or hanging.
+
+The Vale
+In the Eyrie, Sansa poses as Petyr''s daughter Alayne, befriending young Robert Arryn, managing the household, and receiving informal training in royal politics. During this time, Petyr appears to be carefully manipulating his murdered wife''s former bannermen and securing control of the Protectorship of the Vale. He eventually reveals that he has betrothed Sansa to Harrold Hardyng, the next in line to Robert''s title; when the sickly Robert dies, Petyr intends to reveal Sansa''s identity and claim her family stronghold of Winterfell in her name.
+
+Iron Islands
+On the Iron Islands, Aeron Damphair hears of Balon''s death and that Balon''s eldest surviving brother, Euron Greyjoy, has returned from exile and claimed the Seastone Chair. To prevent this Aeron calls a Kingsmoot to identify Balon Greyjoy''s successor as king of the Iron Islands. Hotly contested by Balon''s brother Victarion Greyjoy and daughter Asha Greyjoy, eventually Euron is chosen as king for his promise to control dragons with an enchanted horn he possesses. The fleet of the Iron Men captures the Shield Islands at the mouth of the river Mander, threatening House Tyrell''s seat at Highgarden. Victarion estimates that when the Redwyne fleet returns from the siege at Dragonstone it will retake the islands; and when Euron sends him east to woo Daenerys Targaryen on his behalf, to thus gain a claim to the Iron Throne, Victarion decides to woo her for himself instead.
+
+Dorne
+In Dorne, Doran Martell is confronted by three of his brother Oberyn''s bastard daughters, who want vengeance for their father''s death. Because they are inciting the commonfolk, Doran has them imprisoned in the palace.
+
+A bold attempt by Doran''s daughter Arianne Martell and her lover, Ser Arys Oakheart of the Kingsguard, to crown Doran''s ward Myrcella Baratheon as queen of Westeros under Dornish law – by which the eldest child succeeds regardless of gender – is thwarted by Doran. In the confusion, one of Arianne''s co-conspirators, the knight Gerold "Darkstar" Dayne, attempts to kill Myrcella; she survives but her face is scarred, and Ser Arys is killed. This strains the new Dornish alliance with House Lannister and the Iron Throne. To his daughter, Doran reveals that her brother Quentyn has gone east to bring back "Fire and Blood".')
+INSERT [dbo].[Chapter] ([ChapterID], [BookID], [Title], [Content]) VALUES (2, 1, N'Chapter 2:', N'Across the Narrow Sea
+Arriving in Braavos, Arya Stark finds her way to the House of Black and White, a temple associated with the assassins known as the Faceless Men. As a novice there, Arya attempts to master their belief that Faceless Men have no true identity by throwing all her treasures into the water (secretly keeping her sword, Needle) and posing as a girl called "Cat of the Canals". Her former identity asserts itself in the form of wolf dreams, and also when she kills Dareon, sworn brother of Samwell Tarly, for abandoning the Night''s Watch. Having confessed this death, she is given a glass of warm milk as punishment. She wakes up the following morning blind.
+
+Jon Snow has ordered Samwell Tarly to sail to the Citadel in Oldtown (via Braavos), to research the Others and become a Maester. Sam is accompanied by aging Maester Aemon, the wildling mother Gilly, her newborn baby, and sworn brother Dareon. The voyage across the Narrow Sea is underway before Sam realizes Jon swapped the sons of Gilly and Mance Rayder, to protect the Wildling "prince" from sacrifice by the priestess Melisandre. Aemon becomes sick and the party waits in Braavos for his health to improve. After a Summer Islander tells Aemon about the Targaryen dragons, Aemon decides that Daenerys has come to fulfill a prophecy. He dies at the age of 102 shortly after they leave Braavos.
+
+At the end of the novel, Samwell arrives at the Citadel to begin his training. He meets the archmaester Marwyn, who tells him the Citadel have a plan against magic, and leaves to find Daenerys. Samwell also encounters a fellow apprentice who introduces himself as Pate, connecting the prologue to the narrative.')
+SET IDENTITY_INSERT [dbo].[Chapter] OFF
+INSERT [dbo].[Users] ([UserID], [Email], [Password], [Address], [Phone], [Type], [Avatar]) VALUES (N'admin', N'abc', N'admin', N'abc', 12, N'Admin', NULL)
+INSERT [dbo].[Users] ([UserID], [Email], [Password], [Address], [Phone], [Type], [Avatar]) VALUES (N'user', N'abc', N'user', N'abc', 12, N'User', NULL)
+/****** Object:  Index [UQ__Book_Cat__9C70518486609310]    Script Date: 7/10/2019 9:19:14 PM ******/
+ALTER TABLE [dbo].[Book_Category] ADD UNIQUE NONCLUSTERED 
+(
+	[BookID] ASC,
+	[CategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Book_Category]  WITH CHECK ADD FOREIGN KEY([BookID])
+REFERENCES [dbo].[Book] ([BookID])
+GO
+ALTER TABLE [dbo].[Book_Category]  WITH CHECK ADD FOREIGN KEY([CategoryID])
+REFERENCES [dbo].[Category] ([CategoryID])
+GO
+ALTER TABLE [dbo].[BookRequest]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Chapter]  WITH CHECK ADD FOREIGN KEY([BookID])
+REFERENCES [dbo].[Book] ([BookID])
+GO
+ALTER TABLE [dbo].[Comment]  WITH CHECK ADD FOREIGN KEY([BookID])
+REFERENCES [dbo].[Book] ([BookID])
+GO
+ALTER TABLE [dbo].[Comment]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[VoteScore]  WITH CHECK ADD FOREIGN KEY([BookID])
+REFERENCES [dbo].[Book] ([BookID])
+GO
+ALTER TABLE [dbo].[VoteScore]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+USE [master]
+GO
+ALTER DATABASE [PRN292_Assignment] SET  READ_WRITE 
+GO
+project.sql
+Displaying project.sql.
