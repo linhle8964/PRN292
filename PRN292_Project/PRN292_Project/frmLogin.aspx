@@ -14,7 +14,7 @@
         <br />
     <div style="height: 239px">
     
-        <table style="width: 100%; height: 129px;">
+        <table style="width: 100%; height: 129px; background-color:#ffffcc" >
             <tr>
                 <td>
                     <asp:Label ID="Label2" runat="server" Text="Username"></asp:Label>
@@ -47,16 +47,16 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="btnLogin" runat="server" Text="Log In" OnClick="btnLogin_Click" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Log In" OnClick="btnLogin_Click" BackColor="Aqua" ForeColor="White" />
                 </td>
                 <td>
-                    <asp:Button ID="btnSignin" runat="server" Text="Sign In" />
+                    <asp:Button ID="btnSignin" runat="server" Text="Sign In" OnClick="btnSignin_Click" BackColor="Aqua" ForeColor="White" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblShow" runat="server"></asp:Label>
+                    <asp:Label ID="lblShow" runat="server" ForeColor="Red"></asp:Label>
                 </td>
                 <td>
                     &nbsp;</td>

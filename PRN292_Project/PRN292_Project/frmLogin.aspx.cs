@@ -53,5 +53,10 @@ namespace PRN292_Project
                 lblShow.Text = "Wrong input";
             }
         }
+
+        protected void btnSignin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmSignin.aspx");
+        }
     }
 }

@@ -20,21 +20,14 @@
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
-        <br />
 &nbsp;&nbsp;&nbsp;
-        <br />
-        <br />
-&nbsp;&nbsp;&nbsp;
-        <br />
-        <br />
-&nbsp;&nbsp;&nbsp;
-        <table style="width:100%;">
+        <table style="width:100%; background-color:#ffffcc" >
             <tr>
                 <td class="auto-style1">
                     <asp:Label ID="Label1" runat="server" Text="User Name"></asp:Label>
                 </td>
                 <td class="auto-style1">
-                    <asp:TextBox ID="TextBox1" runat="server" Width="206px"></asp:TextBox>
+                    <asp:TextBox ID="txtUsername" runat="server" Width="206px"></asp:TextBox>
                 </td>
                 <td class="auto-style1"></td>
             </tr>
@@ -43,7 +36,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Password" Width="206px"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Width="206px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -52,7 +45,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Email"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox3" runat="server" Width="206px"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" Width="206px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -61,7 +54,7 @@
                     <asp:Label ID="Label4" runat="server" Text="Address"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox4" runat="server" Width="206px"></asp:TextBox>
+                    <asp:TextBox ID="txtAddress" runat="server" Width="206px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -70,11 +63,16 @@
                     <asp:Label ID="Label5" runat="server" Text="Phone"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox5" runat="server" Width="206px"></asp:TextBox>
+                    <asp:TextBox ID="txtPhone" runat="server" Width="206px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
         </table>
+    
+        <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="btnSignin" runat="server" OnClick="btnSignin_Click" Text="Sign In" BackColor="Aqua" BorderColor="Aqua" Font-Underline="False" ForeColor="White" />
     
     </div>
     </form>
