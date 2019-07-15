@@ -61,7 +61,7 @@ namespace PRN292_Project
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             //lấy book id
             string bookid = gvr.Cells[0].Text;
-            Response.Redirect("frmAdminChapter.aspx?id="+bookid);
+            Response.Redirect("frmAdminChapter.aspx?bookid="+bookid);
         }
 
         protected void btnAddBook_Click(object sender, EventArgs e)
@@ -87,6 +87,12 @@ namespace PRN292_Project
         {
             Session.RemoveAll();
             Response.Redirect("frmLogin.aspx");
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            this.load_data();
         }
     }
 }

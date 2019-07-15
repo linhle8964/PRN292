@@ -21,6 +21,7 @@ namespace PRN292_Project
             if (!IsPostBack)
             {
                 load_page();
+                
             }
         }
 
@@ -55,10 +56,12 @@ namespace PRN292_Project
                 reader.Close();
             }
             con.Close();
+           
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
+            chapterId = Request.QueryString["id"];
             SqlConnection con = new SqlConnection(connStr);
             SqlCommand cmd = new SqlCommand("update Chapter " +
                             "set Title = @title , Content = @content " +
@@ -80,13 +83,16 @@ namespace PRN292_Project
             cmd.ExecuteNonQuery();
             con.Close();
 
+            load_page();
             Response.Redirect("frmAdminChapter.aspx?bookid=" + bookId);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
             load_page();
-            Response.Redirect("frmAdminChapter.aspx?id=" + bookId);
+            Response.Redirect("frmAdminChapter.aspx?bookid=" + bookId);
         }
+
+      
     }
 }

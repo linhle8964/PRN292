@@ -50,7 +50,7 @@
         </table>
         <br />
        
-        <asp:GridView ID="GridViewListChapter" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="5" Width="644px" OnSelectedIndexChanged="GridViewListChapter_SelectedIndexChanged">
+        <asp:GridView ID="GridViewListChapter" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="5" Width="644px" OnPageIndexChanging="GridViewListChapter_PageIndexChanging" >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="ChapterID" HeaderText="ID" />
@@ -76,6 +76,8 @@
     
         <br />
         <asp:Button ID="btnAddChapter" runat="server" OnClick="btnAddChapter_Click" Text="Add Chapter" />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Back" runat="server" OnClick="Back_Click" Text="Back to Home Page" />
         <br />
     
     </div>

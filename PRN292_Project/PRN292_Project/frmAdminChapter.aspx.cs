@@ -24,7 +24,7 @@ namespace PRN292_Project
         private void load_data()
         {
             // Lấy book id từ trang trước
-            string bookID = Request.QueryString["id"];
+            string bookID = Request.QueryString["bookid"];
             // Lưu book id vào 1 label để các hàm khác dễ lấy lại và sử dụng 
             lblBookID.Text = bookID;
 
@@ -77,7 +77,7 @@ namespace PRN292_Project
             Response.Redirect("frmAdminChapterEdit.aspx?id=" + chapterID);
         }
 
-        public void btnDel_Click(object sender, EventArgs e)
+        protected void btnDel_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
 
@@ -89,6 +89,16 @@ namespace PRN292_Project
 
             //var confirmDel = MessageBox 
         }
-        
+
+        protected void GridViewListChapter_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewListChapter.PageIndex = e.NewPageIndex;
+            this.load_data();
+        }
+
+        protected void Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmAdminBook.aspx?");
+        }
     }
 }

@@ -37,10 +37,11 @@ namespace PRN292_Project
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            bookId = Request.QueryString["bookid"];
             SqlConnection con = new SqlConnection(connStr);
             SqlCommand cmd = new SqlCommand("insert into Chapter values('"
                 + bookId + "', '"
-                + txtTitle.Text + "', '" + txtContent.Text + "',Null)", con);
+                + txtTitle.Text + "', '" + txtContent.Text + "')", con);
 
             con.Open();
             cmd.ExecuteNonQuery();
@@ -51,6 +52,7 @@ namespace PRN292_Project
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
+            bookId = Request.QueryString["bookid"];
             Response.Redirect("frmAdminChapter.aspx?bookid=" + bookId);
         }
     }
