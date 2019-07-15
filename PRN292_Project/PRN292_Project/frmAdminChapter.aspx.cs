@@ -29,6 +29,25 @@ namespace PRN292_Project
             lblBookID.Text = bookID;
 
             SqlConnection con = new SqlConnection(connStr);
+
+            SqlCommand cmd = new SqlCommand("select * from Book where BookID = " + bookID, con);
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            try
+            {
+                while (reader.Read())
+                {
+                    lblBookID.Text = reader.GetInt32(0) + "";
+                    lblTitle.Text = reader.GetString(1);
+                    lblSummary.Text = reader.GetString(2);
+                    lblAuthor.Text = reader.GetString(3);
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+
             SqlDataAdapter da = new SqlDataAdapter("select * from Chapter where BookID=" + bookID, con);
             DataTable tb = new DataTable();
             da.Fill(tb);
@@ -42,7 +61,7 @@ namespace PRN292_Project
         protected void btnAddChapter_Click(object sender, EventArgs e)
         {
             string bookID = lblBookID.Text;
-            Response.Redirect("frmAdminChapterAdd.aspx?id="+bookID);
+            Response.Redirect("frmAdminChapterAdd.aspx?bookid="+bookID);
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
@@ -57,5 +76,19 @@ namespace PRN292_Project
 
             Response.Redirect("frmAdminChapterEdit.aspx?id=" + chapterID);
         }
+
+        public void btnDel_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            //Lấy hàng có chứa dữ liệu của nút đã bấm
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            //lấy chapter id
+
+            string chapterID = gvr.Cells[0].Text; ;
+
+            //var confirmDel = MessageBox 
+        }
+        
     }
 }

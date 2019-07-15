@@ -10,3 +10,9 @@ C:\Users\ABC\Desktop\dotnet\New folder\PRN292\PRN292_Project\PRN292_Project\bin\
 C:\Users\ABC\Desktop\dotnet\New folder\PRN292\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.csprojResolveAssemblyReference.cache
 C:\Users\ABC\Desktop\dotnet\New folder\PRN292\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.dll
 C:\Users\ABC\Desktop\dotnet\New folder\PRN292\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.pdb
+E:\Study\2019 Summer\PRN292 - .NET and C#\Projects\GroupProject\PRN292_Project\PRN292_Project\bin\PRN292_Project.dll.config
+E:\Study\2019 Summer\PRN292 - .NET and C#\Projects\GroupProject\PRN292_Project\PRN292_Project\bin\PRN292_Project.dll
+E:\Study\2019 Summer\PRN292 - .NET and C#\Projects\GroupProject\PRN292_Project\PRN292_Project\bin\PRN292_Project.pdb
+E:\Study\2019 Summer\PRN292 - .NET and C#\Projects\GroupProject\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.csprojResolveAssemblyReference.cache
+E:\Study\2019 Summer\PRN292 - .NET and C#\Projects\GroupProject\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.dll
+E:\Study\2019 Summer\PRN292 - .NET and C#\Projects\GroupProject\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.pdb

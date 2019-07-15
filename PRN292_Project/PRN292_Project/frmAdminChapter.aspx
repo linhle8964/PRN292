@@ -50,12 +50,17 @@
         </table>
         <br />
        
-        <asp:GridView ID="GridViewListChapter" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="5" Width="644px">
+        <asp:GridView ID="GridViewListChapter" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="5" Width="644px" OnSelectedIndexChanged="GridViewListChapter_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="ChapterID" HeaderText="ID" />
                 <asp:BoundField DataField="Title" HeaderText="Title" />
-                <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" />
+                <%--<asp:CommandField HeaderText="Delete" ShowDeleteButton="True" ButtonType="Button" />--%>
+                <asp:TemplateField HeaderText="Delete">
+                    <ItemTemplate>
+                        <asp:Button ID="btnDel" runat="server" OnClick="btnDel_Click" Text="Delete" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Edit">
                     <ItemTemplate>
                         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
