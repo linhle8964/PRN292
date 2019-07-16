@@ -50,7 +50,7 @@
         </table>
         <br />
        
-        <asp:GridView ID="GridViewListChapter" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="5" Width="644px" OnSelectedIndexChanged="GridViewListChapter_SelectedIndexChanged">
+        <asp:GridView ID="GridViewListChapter" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="5" Width="644px">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="ChapterID" HeaderText="ID" />

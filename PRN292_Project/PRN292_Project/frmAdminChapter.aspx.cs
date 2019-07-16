@@ -13,14 +13,15 @@ namespace PRN292_Project
     public partial class frmAdminChapter : System.Web.UI.Page
     {
         string connStr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 load_data();
             }
-            
-    }
+        }
+
         private void load_data()
         {
             // Lấy book id từ trang trước
@@ -56,12 +57,12 @@ namespace PRN292_Project
 
         }
 
-    
+
 
         protected void btnAddChapter_Click(object sender, EventArgs e)
         {
             string bookID = lblBookID.Text;
-            Response.Redirect("frmAdminChapterAdd.aspx?bookid="+bookID);
+            Response.Redirect("frmAdminChapterAdd.aspx?id=" + bookID);
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
@@ -71,7 +72,7 @@ namespace PRN292_Project
             //Lấy hàng có chứa dữ liệu của nút đã bấm
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             //lấy chapter id
-            
+
             string chapterID = gvr.Cells[0].Text; ;
 
             Response.Redirect("frmAdminChapterEdit.aspx?id=" + chapterID);
@@ -79,6 +80,7 @@ namespace PRN292_Project
 
         public void btnDel_Click(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection(connStr);
             Button btn = (Button)sender;
 
             //Lấy hàng có chứa dữ liệu của nút đã bấm
@@ -88,7 +90,13 @@ namespace PRN292_Project
             string chapterID = gvr.Cells[0].Text; ;
 
             //var confirmDel = MessageBox 
+
+            SqlCommand cmd = new SqlCommand("Delete from Chapter where ChapterID = " + chapterID, con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+            load_data();
         }
-        
+
     }
 }

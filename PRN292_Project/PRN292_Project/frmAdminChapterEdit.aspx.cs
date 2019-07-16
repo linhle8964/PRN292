@@ -13,18 +13,18 @@ namespace PRN292_Project
     public partial class frmAdminChapterEdit : System.Web.UI.Page
     {
         string connStr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
-        string chapterId, bookId;
+        private static string chapterId, bookId;
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                load_page();
+                load_data();
             }
         }
 
-        private void load_page()
+        private void load_data()
         {
             chapterId = Request.QueryString["id"];
             lblChapterID.Text = chapterId;
@@ -74,18 +74,18 @@ namespace PRN292_Project
 
             //set chapter id to query string
             cmd.Parameters.Add("@cid", SqlDbType.Int);
-            cmd.Parameters["@cid"].Value = chapterId;
+            cmd.Parameters["@cid"].Value = Int32.Parse(lblChapterID.Text);
 
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
 
-            Response.Redirect("frmAdminChapter.aspx?bookid=" + bookId);
+            Response.Redirect("frmAdminChapter.aspx?id=" + bookId);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            load_page();
+            //load_data();
             Response.Redirect("frmAdminChapter.aspx?id=" + bookId);
         }
     }
