@@ -10,7 +10,7 @@
 namespace PRN292_Project {
     
     
-    public partial class frmUserHome {
+    public partial class frmUserRead {
         
         /// <summary>
         /// form1 control.
@@ -37,16 +37,16 @@ namespace PRN292_Project {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogout;
+        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
         
         /// <summary>
-        /// Label1 control.
+        /// btnHome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.LinkButton btnHome;
         
         /// <summary>
         /// Label2 control.
@@ -58,39 +58,39 @@ namespace PRN292_Project {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// txtSearch control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// btnSearch control.
+        /// btnPrevious control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.LinkButton btnPrevious;
         
         /// <summary>
-        /// btnCategory control.
+        /// btnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnCategory;
+        protected global::System.Web.UI.WebControls.LinkButton btnBack;
         
         /// <summary>
-        /// GridView1 control.
+        /// btnNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.LinkButton btnNext;
     }
 }

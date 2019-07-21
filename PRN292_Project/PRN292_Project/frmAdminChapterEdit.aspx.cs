@@ -21,7 +21,7 @@ namespace PRN292_Project
             if (!IsPostBack)
             {
 
-                load_page();
+                load_data();
                 
 
 
@@ -87,7 +87,7 @@ namespace PRN292_Project
             con.Close();
 
 
-            load_page();
+            load_data();
             Response.Redirect("frmAdminChapter.aspx?bookid=" + bookId);
 
         }
@@ -95,7 +95,7 @@ namespace PRN292_Project
         protected void btnBack_Click(object sender, EventArgs e)
         {
 
-            load_page();
+            load_data();
             Response.Redirect("frmAdminChapter.aspx?bookid=" + bookId);
 
         }

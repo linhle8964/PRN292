@@ -10,32 +10,37 @@ using System.Data;
 
 namespace PRN292_Project
 {
-    public partial class frmUserHome : System.Web.UI.Page
+    public partial class frmUserCategoryBook : System.Web.UI.Page
     {
         string connStr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                lblUsername.Text = Session["userid"].ToString();
                 load_data();
             }
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+        private void load_data()
         {
+            string categoryid = Request.QueryString["categoryid"];
             SqlConnection con = new SqlConnection(connStr);
-            SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,s.[Average Score] " +
-"from Book b, " +
+            SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,s.[Average Score],c.CategoryName " +
+"from Book b, Book_Category bc, Category c, " +
 "(select AVG(Score) as 'Average Score', BookID " +
 "from VoteScore " +
 "group by (BookID)) s " +
-"where b.BookID = s.BookID and b.Title like '%" + txtSearch.Text + "%' " +
+ "where b.BookID = s.BookID and b.BookID = bc.BookID and c.CategoryID = bc.CategoryID and c.CategoryID = '" + categoryid + "' "+
 "order by s.[Average Score] desc", con);
             DataTable tb = new DataTable();
             da.Fill(tb);
             GridView1.DataSource = tb;
             GridView1.DataBind();
+
+            lblCategoryName.Text = tb.Rows[0]["CategoryName"].ToString();
         }
+
 
         protected void btnGo_Click(object sender, EventArgs e)
         {
@@ -48,34 +53,15 @@ namespace PRN292_Project
             Response.Redirect("frmUserBook.aspx?bookid=" + bookid);
         }
 
-        private void load_data()
-        {
-            SqlConnection con = new SqlConnection(connStr);
-            SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,s.[Average Score] " + 
-"from Book b, " +
-"(select AVG(Score) as 'Average Score', BookID " +
-"from VoteScore " +
-"group by (BookID)) s " +
-"where b.BookID = s.BookID " +
-"order by s.[Average Score] desc", con);
-            DataTable tb = new DataTable();
-            da.Fill(tb);
-            GridView1.DataSource = tb;
-            GridView1.DataBind();
-
-            lblUsername.Text = Session["userid"].ToString();
-
-        }
-
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
             Response.Redirect("frmLogin.aspx");
         }
 
-        protected void btnCategory_Click(object sender, EventArgs e)
+        protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmUserCategoryList.aspx");
+            Response.Redirect("frmUserHome.aspx");
         }
     }
 }

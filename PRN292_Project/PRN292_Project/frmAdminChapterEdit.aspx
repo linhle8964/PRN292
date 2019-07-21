@@ -7,7 +7,7 @@
     <title></title>
     <style type="text/css">
         #form1 {
-            height: 311px;
+            height: 332px;
         }
     </style>
 </head>
@@ -15,8 +15,7 @@
     <form id="form1" runat="server">
     <div style="height: 205px">
     
-        <strong>Series</strong>:
-        <asp:Label ID="lblSeries" runat="server" Text="Label"></asp:Label>
+        &nbsp;<asp:Label ID="lblSeries" runat="server" Text="Label"></asp:Label>
         <br />
         <br />
     
