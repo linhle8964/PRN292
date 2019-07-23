@@ -142,29 +142,38 @@ namespace PRN292_Project
         }
         protected string GetCategoryData()
         {
-            SqlDataReader Page = null;
+            String result = "";
             //Create SQL Connection to Server
             SqlConnection myConnection = new SqlConnection(connStr);
             //Try and connect to Server and Database
-            SqlCommand myCommand = new SqlCommand("select CategoryName from  Category C INNER JOIN Book_Category B on C.CategoryID=B.CategoryID INNER JOIN BOOK A on B.BookID=A.BookID", myConnection);
+
             try
             {
-                //Open the connection to the database
+                SqlCommand myCommand = new SqlCommand("select CategoryName from  Category C INNER JOIN Book_Category B on C.CategoryID=B.CategoryID INNER JOIN BOOK A on B.BookID=A.BookID", myConnection);
                 myConnection.Open();
-                //Run the SQL Command
-                string pData = Convert.ToString(myCommand.ExecuteNonQuery());
 
-                //Read in data
-                //Close Connect to server & database
-                myConnection.Close();
-                return pData;
+                SqlDataReader reader = myCommand.ExecuteReader();
+                List<string> str = new List<string>();
+                int i = 0;
+                while (reader.Read())
+                {
+                    str.Add(reader.GetValue(0).ToString());
+                }
+                foreach (string item in str)
+                {
+                    result += item + ",";
+                }
+                reader.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //If there is an error Print it to the Page.
-                // Response.Write(ex.Message);
-                return ex.Message;
+                throw;
             }
+            finally
+            {
+                myConnection.Close();
+            }
+            return result;
         }
 
         protected void btnComment_Click(object sender, EventArgs e)
@@ -189,7 +198,7 @@ namespace PRN292_Project
                 string CommentID = GridViewComment.Rows[e.RowIndex].Cells[0].Text;
                 string UserID1 = GridViewComment.Rows[e.RowIndex].Cells[1].Text;
                 string Content = (GridViewComment.Rows[e.RowIndex].Cells[2].Controls[0] as TextBox).Text;
-
+                GridViewComment.Rows[e.RowIndex].Cells[3].Enabled = false;
                 SqlConnection con = new SqlConnection(connStr);
                 SqlCommand cmd = new SqlCommand("update Comment set Content='" + Content +
                      "' where UserID='" + UserID1 + "'", con);
@@ -199,7 +208,12 @@ namespace PRN292_Project
                 GridViewComment.EditIndex = -1;
                 load_data();
             }
-            else { ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('YOU ARE NOT ALLOWED TO EDIT COMMENT TO OTHER USER ');", true); }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('YOU ARE NOT ALLOWED TO EDIT COMMENT TO OTHER USER ');", true); 
+
+
+            }
         }
 
         protected void GridViewComment_RowEditing(object sender, GridViewEditEventArgs e)
@@ -236,6 +250,12 @@ namespace PRN292_Project
         {
             GridViewComment.PageIndex = e.NewPageIndex;
             load_data();
+        }
+
+        protected void GridViewComment_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+           
+           
         }
     }
 }

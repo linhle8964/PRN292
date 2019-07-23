@@ -99,7 +99,7 @@
         <br />
         <asp:Button ID="btnComment" runat="server" Text="Add Comment" OnClick="btnComment_Click" />
         <br />
-        <asp:GridView ID="GridViewComment" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" Width="728px" AllowPaging="True" OnPageIndexChanging="GridViewComment_PageIndexChanging" OnRowCancelingEdit="GridViewComment_RowCancelingEdit" OnRowDeleting="GridViewComment_RowDeleting" OnRowEditing="GridViewComment_RowEditing" OnRowUpdating="GridViewComment_RowUpdating" PageSize="4">
+        <asp:GridView ID="GridViewComment" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" Width="728px" AllowPaging="True" OnPageIndexChanging="GridViewComment_PageIndexChanging" OnRowCancelingEdit="GridViewComment_RowCancelingEdit" OnRowDeleting="GridViewComment_RowDeleting" OnRowEditing="GridViewComment_RowEditing" OnRowUpdating="GridViewComment_RowUpdating" PageSize="4" OnRowDataBound="GridViewComment_RowDataBound">
             <Columns>
                 <asp:BoundField DataField="CommentID" HeaderText="ID" ReadOnly="True" />
                 <asp:BoundField DataField="UserID" HeaderText="User" ReadOnly="True" />
