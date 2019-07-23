@@ -10,13 +10,17 @@
             height: 267px;
         }
     </style>
+
+    <link rel="stylesheet" runat="server" media="screen" href="/CSS/Style.css" />
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="header">
         <asp:Label ID="lblUsername" runat="server"></asp:Label>
         &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Log out" />
         <br />
+            </div>
         <asp:Label ID="Label1" runat="server" Text="Home Page"></asp:Label>
         <br />
     <div style="height: 67px">

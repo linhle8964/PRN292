@@ -1,0 +1,41 @@
+﻿body {
+    font-family: 'Times New Roman';
+}
+
+.table{
+   padding-bottom:20px;
+}
+
+.container{
+    width: 70%;
+	height: 70%;
+	background-color: whitesmoke;
+	
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	
+	margin: auto;
+}
+.button-login{
+    float:left;
+     width:45%;
+    border-radius:15px;
+    height:30px;
+    background-color:aquamarine;
+    margin-left:20px;
+    border:none;
+}
+
+.button-signin{
+    float:right;
+     width:45%;
+    border-radius:15px;
+    height:30px;
+    background-color:aquamarine;
+    margin-right:20px;
+    border:none;
+}
+

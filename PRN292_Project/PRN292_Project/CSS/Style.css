@@ -1,0 +1,25 @@
+﻿body {
+     
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-color: #222;
+        /*//color: #D5D4D4;*/
+}
+
+.button{
+    border-radius: 5px;
+
+}
+
+.title{
+    font-size: 25px;
+    text-align:center;
+    font-weight:bold;
+    padding-bottom:20px;
+}
+
+.header{
+    float:right;
+}
