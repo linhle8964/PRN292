@@ -1,44 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.Configuration;
-using System.Data.SqlClient;
-using System.Data;
-
-namespace PRN292_Project
-{
-    public partial class frmUserBook : System.Web.UI.Page
-    {
-        string connStr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                lblUsername.Text = Session["userid"].ToString();
-                load_data();
-            }
-        }
-
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            Session.RemoveAll();
-            Response.Redirect("frmLogin.aspx");
-        }
-
-        private void load_data()
-        {
-            string bookID = Request.QueryString["bookid"];
-            SqlConnection con = new SqlConnection(connStr);
-            SqlDataAdapter da = new SqlDataAdapter("select * from Chapter where BookID=" + bookID, con);
-            DataTable tb = new DataTable();
-            da.Fill(tb);
-            GridViewChapter.DataSource = tb;
-            GridViewChapter.DataBind();
-
-            //Load Book Infor
+//Load Book Infor
             
             SqlDataAdapter da1 = new SqlDataAdapter("select title, summary, author from book where BookID=" + bookID, con);
             DataTable tb1 = new DataTable();
@@ -64,11 +24,9 @@ namespace PRN292_Project
                 da3.Fill(tb3);
                 DropDownList1.SelectedValue = tb3.Rows[0][0].ToString();
             }
-        }
 
-        protected void btnVote_Click(object sender, EventArgs e)
-        {
-            SqlConnection con = new SqlConnection(connStr);
+
+SqlConnection con = new SqlConnection(connStr);
             string bookID = Request.QueryString["bookid"];
             SqlDataAdapter da = new SqlDataAdapter("select voteid from VoteScore where BookID=" + bookID + " and userid='" + lblUsername.Text + "'", con);
             DataSet ds = new DataSet();
@@ -112,23 +70,3 @@ namespace PRN292_Project
                 con.Close();
                 load_data();
             }
-        }
-
-        protected void btnHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frmUserHome.aspx");
-        }
-
-        protected void btnRead_Click(object sender, EventArgs e)
-        {
-            //Lấy button sử dụng event
-            Button btn = (Button)sender;
-
-            //Lấy hàng có chứa dữ liệu của nút đã bấm
-            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-            //lấy book id
-            string chapterid = gvr.Cells[0].Text;
-            Response.Redirect("frmUserRead.aspx?chapterid=" + chapterid);
-        }
-    }
-}
