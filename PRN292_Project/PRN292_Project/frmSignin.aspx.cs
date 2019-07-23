@@ -32,7 +32,7 @@ namespace PRN292_Project
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.ToString();
+                lblError.Text = "Wrong Input";
 
             }
 

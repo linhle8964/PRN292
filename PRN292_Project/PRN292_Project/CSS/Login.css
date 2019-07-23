@@ -39,3 +39,12 @@
     border:none;
 }
 
+.button-register{
+     border-radius:15px;
+    height:30px;
+    background-color:aquamarine;
+    border:none;
+    margin-left: 35%;
+    width: 30%;
+}
+

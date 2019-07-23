@@ -25,10 +25,11 @@ namespace PRN292_Project
         {
             SqlConnection con = new SqlConnection(connStr);
             SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,s.[Average Score] " +
-"from Book b, " +
-"(select AVG(Score) as 'Average Score', BookID " +
-"from VoteScore " +
-"group by (BookID)) s " +
+"from Book b, ( " +
+"select b.BookID, AVG(Score) as 'Average Score' " +
+"from Book b full outer join VoteScore v " +
+"on b.BookID = v.BookID " +
+"group by b.BookID) s " +
 "where b.BookID = s.BookID and b.Title like '%" + txtSearch.Text + "%' " +
 "order by s.[Average Score] desc", con);
             DataTable tb = new DataTable();
@@ -51,11 +52,12 @@ namespace PRN292_Project
         private void load_data()
         {
             SqlConnection con = new SqlConnection(connStr);
-            SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,s.[Average Score] " + 
-"from Book b, " +
-"(select AVG(Score) as 'Average Score', BookID " +
-"from VoteScore " +
-"group by (BookID)) s " +
+            SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,s.[Average Score] " +
+"from Book b, ( " +
+"select b.BookID, AVG(Score) as 'Average Score' "+
+"from Book b full outer join VoteScore v " + 
+"on b.BookID = v.BookID " +
+"group by b.BookID) s " +
 "where b.BookID = s.BookID " +
 "order by s.[Average Score] desc", con);
             DataTable tb = new DataTable();

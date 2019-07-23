@@ -96,8 +96,8 @@
         <br />
         <asp:TextBox ID="TextBox1" runat="server" Height="141px" TextMode="MultiLine" Width="570px"></asp:TextBox>
         <br />
+        <asp:Button ID="btnAddComment" runat="server" OnClick="btnAddComment_Click" Text="Add Comment" />
         <br />
-        <asp:Button ID="btnComment" runat="server" Text="Add Comment" OnClick="btnComment_Click" />
         <br />
         <asp:GridView ID="GridViewComment" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" Width="728px" AllowPaging="True" OnPageIndexChanging="GridViewComment_PageIndexChanging" OnRowCancelingEdit="GridViewComment_RowCancelingEdit" OnRowDeleting="GridViewComment_RowDeleting" OnRowEditing="GridViewComment_RowEditing" OnRowUpdating="GridViewComment_RowUpdating" PageSize="4">
             <Columns>

@@ -167,19 +167,7 @@ namespace PRN292_Project
             }
         }
 
-        protected void btnComment_Click(object sender, EventArgs e)
-        {
-            string bookID = Request.QueryString["bookid"];
-            SqlConnection con = new SqlConnection(connStr);
-            SqlCommand cmd = new SqlCommand("insert into Comment values('"
-               + lblUsername.Text + "','" + bookID + "', '"
-                + TextBox1.Text + "')", con);
-
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-            load_data();
-        }
+      
 
         protected void GridViewComment_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -235,6 +223,20 @@ namespace PRN292_Project
         protected void GridViewComment_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridViewComment.PageIndex = e.NewPageIndex;
+            load_data();
+        }
+
+        protected void btnAddComment_Click(object sender, EventArgs e)
+        {
+            string bookID = Request.QueryString["bookid"];
+            SqlConnection con = new SqlConnection(connStr);
+            SqlCommand cmd = new SqlCommand("insert into Comment values('"
+               + lblUsername.Text + "','" + bookID + "', '"
+                + TextBox1.Text + "')", con);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
             load_data();
         }
     }
