@@ -62,7 +62,11 @@
     <Content Include="frmAdminHome.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmSignin.aspx" />
+    <Content Include="frmUserBook.aspx" />
+    <Content Include="frmUserCategoryBook.aspx" />
+    <Content Include="frmUserCategoryList.aspx" />
     <Content Include="frmUserHome.aspx" />
+    <Content Include="frmUserRead.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -129,12 +133,40 @@
     <Compile Include="frmSignin.aspx.designer.cs">
       <DependentUpon>frmSignin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmUserBook.aspx.cs">
+      <DependentUpon>frmUserBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserBook.aspx.designer.cs">
+      <DependentUpon>frmUserBook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserCategoryBook.aspx.cs">
+      <DependentUpon>frmUserCategoryBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserCategoryBook.aspx.designer.cs">
+      <DependentUpon>frmUserCategoryBook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserCategoryList.aspx.cs">
+      <DependentUpon>frmUserCategoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserCategoryList.aspx.designer.cs">
+      <DependentUpon>frmUserCategoryList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmUserHome.aspx.cs">
       <DependentUpon>frmUserHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frmUserHome.aspx.designer.cs">
       <DependentUpon>frmUserHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserRead.aspx.cs">
+      <DependentUpon>frmUserRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserRead.aspx.designer.cs">
+      <DependentUpon>frmUserRead.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
