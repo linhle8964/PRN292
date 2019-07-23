@@ -51,6 +51,14 @@
                 </td>
                 <td>&nbsp;</td>
             </tr>
+            <tr>
+                <td>
+                    Category</td>
+                <td>
+                    <asp:Label ID="Label10" runat="server" Text="Label"></asp:Label>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
         </table>
         <br />
         <asp:Label ID="Label2" runat="server" Text="Vote"></asp:Label>
@@ -89,12 +97,12 @@
         <asp:TextBox ID="TextBox1" runat="server" Height="141px" TextMode="MultiLine" Width="570px"></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="btnComment" runat="server" Text="Add Comment" />
+        <asp:Button ID="btnComment" runat="server" Text="Add Comment" OnClick="btnComment_Click" />
         <br />
-        <asp:GridView ID="GridViewComment" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" Width="728px">
+        <asp:GridView ID="GridViewComment" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" Width="728px" AllowPaging="True" OnPageIndexChanging="GridViewComment_PageIndexChanging" OnRowCancelingEdit="GridViewComment_RowCancelingEdit" OnRowDeleting="GridViewComment_RowDeleting" OnRowEditing="GridViewComment_RowEditing" OnRowUpdating="GridViewComment_RowUpdating" PageSize="4">
             <Columns>
-                <asp:BoundField DataField="CommentID" HeaderText="ID" />
-                <asp:BoundField DataField="UserID" HeaderText="User" />
+                <asp:BoundField DataField="CommentID" HeaderText="ID" ReadOnly="True" />
+                <asp:BoundField DataField="UserID" HeaderText="User" ReadOnly="True" />
                 <asp:BoundField DataField="Content" HeaderText="Content" />
                 <asp:CommandField ShowEditButton="True" />
                 <asp:CommandField ShowDeleteButton="True" />

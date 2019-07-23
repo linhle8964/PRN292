@@ -30,6 +30,9 @@ namespace PRN292_Project
 
         private void load_data()
         {
+            //Load Category
+            Label10.Text = GetCategoryData();
+            //********************************
             string bookID = Request.QueryString["bookid"];
             SqlConnection con = new SqlConnection(connStr);
             SqlDataAdapter da = new SqlDataAdapter("select * from Chapter where BookID=" + bookID, con);
@@ -39,7 +42,7 @@ namespace PRN292_Project
             GridViewChapter.DataBind();
 
             //Load Book Infor
-            
+
             SqlDataAdapter da1 = new SqlDataAdapter("select title, summary, author from book where BookID=" + bookID, con);
             DataTable tb1 = new DataTable();
             da1.Fill(tb1);
@@ -54,7 +57,7 @@ namespace PRN292_Project
             lblScore.Text = tb2.Rows[0][0].ToString();
 
             //Load current score
-            SqlDataAdapter da3 = new SqlDataAdapter("select score from VoteScore where BookID=" + bookID+" and userid='"+lblUsername.Text+"'", con);
+            SqlDataAdapter da3 = new SqlDataAdapter("select score from VoteScore where BookID=" + bookID + " and userid='" + lblUsername.Text + "'", con);
             DataSet ds = new DataSet();
             da3.Fill(ds);
             int count = ds.Tables[0].Rows.Count;
@@ -64,6 +67,13 @@ namespace PRN292_Project
                 da3.Fill(tb3);
                 DropDownList1.SelectedValue = tb3.Rows[0][0].ToString();
             }
+            //Load Comment            
+            SqlDataAdapter da4 = new SqlDataAdapter("select * from Comment where BookID=" + bookID, con);
+            DataTable tb4 = new DataTable();
+            da4.Fill(tb4);
+            GridViewComment.DataSource = tb4;
+            GridViewComment.DataBind();
+
         }
 
         protected void btnVote_Click(object sender, EventArgs e)
@@ -94,7 +104,7 @@ namespace PRN292_Project
                 //Delete Vote
                 else
                 {
-                    SqlCommand cmd = new SqlCommand("delete from votescore where voteid="+voteid, con);
+                    SqlCommand cmd = new SqlCommand("delete from votescore where voteid=" + voteid, con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -106,7 +116,7 @@ namespace PRN292_Project
             {
                 SqlCommand cmd = new SqlCommand("insert into votescore values ('" + lblUsername.Text
                 + "', '" + bookID
-               + "', '" + int.Parse(DropDownList1.SelectedValue) +  "')", con);
+               + "', '" + int.Parse(DropDownList1.SelectedValue) + "')", con);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -129,6 +139,103 @@ namespace PRN292_Project
             //lấy book id
             string chapterid = gvr.Cells[0].Text;
             Response.Redirect("frmUserRead.aspx?chapterid=" + chapterid);
+        }
+        protected string GetCategoryData()
+        {
+            SqlDataReader Page = null;
+            //Create SQL Connection to Server
+            SqlConnection myConnection = new SqlConnection(connStr);
+            //Try and connect to Server and Database
+            SqlCommand myCommand = new SqlCommand("select CategoryName from  Category C INNER JOIN Book_Category B on C.CategoryID=B.CategoryID INNER JOIN BOOK A on B.BookID=A.BookID", myConnection);
+            try
+            {
+                //Open the connection to the database
+                myConnection.Open();
+                //Run the SQL Command
+                string pData = Convert.ToString(myCommand.ExecuteNonQuery());
+
+                //Read in data
+                //Close Connect to server & database
+                myConnection.Close();
+                return pData;
+            }
+            catch (Exception ex)
+            {
+                //If there is an error Print it to the Page.
+                // Response.Write(ex.Message);
+                return ex.Message;
+            }
+        }
+
+        protected void btnComment_Click(object sender, EventArgs e)
+        {
+            string bookID = Request.QueryString["bookid"];
+            SqlConnection con = new SqlConnection(connStr);
+            SqlCommand cmd = new SqlCommand("insert into Comment values('"
+               + lblUsername.Text + "','" + bookID + "', '"
+                + TextBox1.Text + "')", con);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+            load_data();
+        }
+
+        protected void GridViewComment_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string UserID = GridViewComment.Rows[e.RowIndex].Cells[1].Text;
+            if (lblUsername.Text.Equals(UserID))
+            {
+                string CommentID = GridViewComment.Rows[e.RowIndex].Cells[0].Text;
+                string UserID1 = GridViewComment.Rows[e.RowIndex].Cells[1].Text;
+                string Content = (GridViewComment.Rows[e.RowIndex].Cells[2].Controls[0] as TextBox).Text;
+
+                SqlConnection con = new SqlConnection(connStr);
+                SqlCommand cmd = new SqlCommand("update Comment set Content='" + Content +
+                     "' where UserID='" + UserID1 + "'", con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                GridViewComment.EditIndex = -1;
+                load_data();
+            }
+            else { ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('YOU ARE NOT ALLOWED TO EDIT COMMENT TO OTHER USER ');", true); }
+        }
+
+        protected void GridViewComment_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewComment.EditIndex = e.NewEditIndex;
+            load_data();
+        }
+
+        protected void GridViewComment_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string UserID = GridViewComment.Rows[e.RowIndex].Cells[1].Text;
+            if (lblUsername.Text.Equals(UserID))
+            {
+                string CommentID = GridViewComment.Rows[e.RowIndex].Cells[0].Text;
+
+
+                SqlConnection con = new SqlConnection(connStr);
+                SqlCommand cmd = new SqlCommand("Delete Comment Where CommentID='" + int.Parse(CommentID) +
+               "'", con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                load_data();
+            }
+        }
+
+        protected void GridViewComment_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridViewComment.EditIndex = -1;
+            this.load_data();
+        }
+
+        protected void GridViewComment_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewComment.PageIndex = e.NewPageIndex;
+            load_data();
         }
     }
 }
