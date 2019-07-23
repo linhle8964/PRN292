@@ -21,3 +21,9 @@ C:\Users\ABC\Desktop\dotnet\New folder\PRN292_Project\PRN292_Project\bin\PRN292_
 C:\Users\ABC\Desktop\dotnet\New folder\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.csprojResolveAssemblyReference.cache
 C:\Users\ABC\Desktop\dotnet\New folder\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.dll
 C:\Users\ABC\Desktop\dotnet\New folder\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.pdb
+C:\Users\DELL\Desktop\PT_1\PT_1\PRN292\PRN292_Project\PRN292_Project\bin\PRN292_Project.dll.config
+C:\Users\DELL\Desktop\PT_1\PT_1\PRN292\PRN292_Project\PRN292_Project\bin\PRN292_Project.dll
+C:\Users\DELL\Desktop\PT_1\PT_1\PRN292\PRN292_Project\PRN292_Project\bin\PRN292_Project.pdb
+C:\Users\DELL\Desktop\PT_1\PT_1\PRN292\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.csprojResolveAssemblyReference.cache
+C:\Users\DELL\Desktop\PT_1\PT_1\PRN292\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.dll
+C:\Users\DELL\Desktop\PT_1\PT_1\PRN292\PRN292_Project\PRN292_Project\obj\Debug\PRN292_Project.pdb
