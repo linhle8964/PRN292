@@ -92,6 +92,12 @@ namespace PRN292_Project
 
         }
 
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("frmLogin.aspx");
+        }
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
 

@@ -8,7 +8,7 @@
 }
 
 .textread{
-    height:1000px;
+    height:400px;
     width:100%;
 }
 .gridview{
@@ -17,7 +17,8 @@
 }
 
 .groupbutton{
-    transform: translate(30%, 0) ;
+    margin-top:20px;
+    transform: translate(20%, 0) ;
 }
 
 .gridview td{
@@ -86,10 +87,11 @@
 .table td{
     text-align:left;
     border: 1px solid gray;
+    background-color: aquamarine;
 }
 
 .center-line{
-    transform: translate(30%, 0) ;
+    transform: translate(40%, 0) ;
 }
 
 .menu{

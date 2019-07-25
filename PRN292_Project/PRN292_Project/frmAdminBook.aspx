@@ -12,23 +12,21 @@
     
      <div class="wrap">
                 <div class="header">
-                    <h1>Typemoon</h1>
-                    <span>Welcome to this website</span>
+                    <h1>Admin Page</h1>
 
                 </div>
                 <div class="menu">
                     <a class="active">Home</a>
-                    <a href="frmUserCategoryList.aspx">Category</a>
+                    <a href="frmAdminBookAdd.aspx">Add Book</a>
                     <div class="float-right">
                         <asp:Label ID="lblUsername" runat="server" CssClass="username"></asp:Label>
                         <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Log out" CssClass="button-logout" />
                     </div>
                 </div>
     
-        <asp:Button ID="btnAddBook" runat="server" OnClick="btnAddBook_Click" Text="Add Book" />
         <br />
         <br />
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Height="148px" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3" Width="600px" OnPageIndexChanging="GridView1_PageIndexChanging">
+        <asp:GridView CssClass="gridview" ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Height="148px" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3" OnPageIndexChanging="GridView1_PageIndexChanging">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="BookID" HeaderText="BookID" />
@@ -51,7 +49,7 @@
             <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
         </asp:GridView>
-    
+    <!--#include file="footer.html" -->
     </div>
     </form>
 </body>

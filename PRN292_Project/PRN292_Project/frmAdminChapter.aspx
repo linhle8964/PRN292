@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" runat="server" media="screen" href="/CSS/Style.css" />
     <style type="text/css">
         .auto-style1 {
             width: 101px;
@@ -13,9 +14,19 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="height: 457px">
-    
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <div class="wrap">
+                <div class="header">
+                    <h1>Admin Page</h1>
+
+                </div>
+                <div class="menu">
+                    <a class="active" href="frmAdminBook.aspx">Home</a>
+                    <a href="frmAdminBookAdd.aspx">Add Book</a>
+                    <div class="float-right">
+                        <asp:Label ID="lblUsername" runat="server" CssClass="username"></asp:Label>
+                        <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Log out" CssClass="button-logout" />
+                    </div>
+                </div>
         <asp:Label ID="lblTitle" runat="server" Text="Load Title vào đây"></asp:Label>
         <br />
         <br />
@@ -51,7 +62,7 @@
         <br />
        
 
-        <asp:GridView ID="GridViewListChapter" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="5" Width="644px" OnPageIndexChanging="GridViewListChapter_PageIndexChanging" >
+        <asp:GridView CssClass="gridview" ID="GridViewListChapter" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" PageSize="5" OnPageIndexChanging="GridViewListChapter_PageIndexChanging" >
 
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -81,7 +92,7 @@
         &nbsp;&nbsp;&nbsp;
         <asp:Button ID="Back" runat="server" OnClick="Back_Click" Text="Back to Home Page" />
         <br />
-    
+    <!--#include file="footer.html" -->
     </div>
     </form>
 </body>

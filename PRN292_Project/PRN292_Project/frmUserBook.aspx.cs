@@ -233,6 +233,9 @@ namespace PRN292_Project
                 cmd.ExecuteNonQuery();
                 con.Close();
                 load_data();
+            }else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('YOU ARE NOT ALLOWED TO Delete COMMENT TO OTHER USER ');", true);
             }
         }
 

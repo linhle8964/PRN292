@@ -110,5 +110,10 @@ namespace PRN292_Project
             Response.Redirect("frmAdminBook.aspx?");
         }
 
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("frmLogin.aspx");
+        }
     }
 }

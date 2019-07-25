@@ -70,5 +70,11 @@ namespace PRN292_Project
             Response.Redirect("frmAdminChapter.aspx?bookid=" + bookId);
 
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("frmLogin.aspx");
+        }
     }
 }

@@ -84,7 +84,8 @@
                     <br />
                     <br />
                     <h1>Chapter</h1>
-                    <asp:GridView ID="GridViewChapter" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" CssClass="gridview">
+                    <asp:GridView ID="GridViewChapter" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" CssClass="gridview" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="ChapterID" HeaderText="ID" />
                             <asp:BoundField DataField="Title" HeaderText="Title" />
@@ -94,6 +95,12 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                     </asp:GridView>
                     <br />
                     <asp:Label ID="Label8" runat="server" Text="Comment" Font-Bold="True"></asp:Label>
@@ -104,7 +111,7 @@
                     <asp:Button ID="btnAddComment" runat="server" OnClick="btnAddComment_Click" Text="Add Comment" />
                     <br />
                     <br />
-                    <asp:GridView ID="GridViewComment" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" Width="728px" AllowPaging="True" OnPageIndexChanging="GridViewComment_PageIndexChanging" OnRowCancelingEdit="GridViewComment_RowCancelingEdit" OnRowDeleting="GridViewComment_RowDeleting" OnRowEditing="GridViewComment_RowEditing" OnRowUpdating="GridViewComment_RowUpdating" PageSize="4" OnRowDataBound="GridViewComment_RowDataBound" CssClass="gridview">
+                    <asp:GridView ID="GridViewComment" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" Width="728px" AllowPaging="True" OnPageIndexChanging="GridViewComment_PageIndexChanging" OnRowCancelingEdit="GridViewComment_RowCancelingEdit" OnRowDeleting="GridViewComment_RowDeleting" OnRowEditing="GridViewComment_RowEditing" OnRowUpdating="GridViewComment_RowUpdating" PageSize="4" OnRowDataBound="GridViewComment_RowDataBound" CssClass="gridview" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
                         <Columns>
                             <asp:BoundField DataField="CommentID" HeaderText="ID" ReadOnly="True" />
                             <asp:BoundField DataField="UserID" HeaderText="User" ReadOnly="True" />
@@ -112,6 +119,11 @@
                             <asp:CommandField ShowEditButton="True" />
                             <asp:CommandField ShowDeleteButton="True" />
                         </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#333333" />
+                        <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="White" ForeColor="#333333" />
+                        <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
                     </asp:GridView>
                 </div>
                 <!--#include file="footer.html" -->

@@ -36,7 +36,7 @@ namespace PRN292_Project
             GridViewCategoryList.DataSource = tb;
             GridViewCategoryList.DataBind();
 
-            da = new SqlDataAdapter("select b.BookID,c.CategoryID,c.CategoryName from Book b, Book_Category bc, Category c where b.BookID = bc.BookID and c.CategoryID = bc.CategoryID ", con);
+            da = new SqlDataAdapter("select b.BookID,c.CategoryID,c.CategoryName from Book b, Book_Category bc, Category c where b.BookID = bc.BookID and c.CategoryID = bc.CategoryID and b.BookID = '" +bookID+ "'", con);
             tb = new DataTable();
             da.Fill(tb);
             GridViewBookCategory.DataSource = tb;
@@ -120,6 +120,24 @@ namespace PRN292_Project
                     connection.Close();
                 }
             }
+            load_data();
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("frmLogin.aspx");
+        }
+
+        protected void GridViewCategoryList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewCategoryList.PageIndex = e.NewPageIndex;
+            load_data();
+        }
+
+        protected void GridViewBookCategory_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewBookCategory.PageIndex = e.NewPageIndex;
             load_data();
         }
     }

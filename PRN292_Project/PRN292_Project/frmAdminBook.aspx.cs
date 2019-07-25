@@ -64,11 +64,7 @@ namespace PRN292_Project
             Response.Redirect("frmAdminChapter.aspx?bookid="+bookid);
         }
 
-        protected void btnAddBook_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("frmAdminBookAdd.aspx");
-        }
+        
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {

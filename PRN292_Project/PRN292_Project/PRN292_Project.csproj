@@ -63,7 +63,6 @@
     <Content Include="frmAdminChapter.aspx" />
     <Content Include="frmAdminChapterAdd.aspx" />
     <Content Include="frmAdminChapterEdit.aspx" />
-    <Content Include="frmAdminHome.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmSignin.aspx" />
     <Content Include="frmUserBook.aspx" />
@@ -115,13 +114,6 @@
     </Compile>
     <Compile Include="frmAdminChapterEdit.aspx.designer.cs">
       <DependentUpon>frmAdminChapterEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="frmAdminHome.aspx.cs">
-      <DependentUpon>frmAdminHome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="frmAdminHome.aspx.designer.cs">
-      <DependentUpon>frmAdminHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.aspx.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
