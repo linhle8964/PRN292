@@ -26,7 +26,7 @@ namespace PRN292_Project
         
         private void load_data()
         {
-            bookId = Request.QueryString["id"];
+            bookId = Request.QueryString["bookid"];
             SqlConnection con = new SqlConnection(connStr);
             SqlCommand cmd = new SqlCommand("select Title from Book where BookID = " + bookId, con);
             con.Open();
@@ -60,7 +60,7 @@ namespace PRN292_Project
             cmd.ExecuteNonQuery();
             con.Close();
             
-            Response.Redirect("frmAdminChapter.aspx?id=" + bookId);
+            Response.Redirect("frmAdminChapter.aspx?bookid=" + bookId);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

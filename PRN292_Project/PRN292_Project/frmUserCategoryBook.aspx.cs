@@ -38,7 +38,10 @@ namespace PRN292_Project
             GridView1.DataSource = tb;
             GridView1.DataBind();
 
-            lblCategoryName.Text = tb.Rows[0]["CategoryName"].ToString();
+            if (GridView1.Rows.Count != 0)
+            {
+                lblCategoryName.Text = tb.Rows[0]["CategoryName"].ToString();
+            }
         }
 
 
@@ -59,9 +62,6 @@ namespace PRN292_Project
             Response.Redirect("frmLogin.aspx");
         }
 
-        protected void btnHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frmUserHome.aspx");
-        }
+       
     }
 }

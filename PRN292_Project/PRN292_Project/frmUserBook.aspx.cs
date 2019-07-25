@@ -51,7 +51,7 @@ namespace PRN292_Project
             lblSummary.Text = tb1.Rows[0][1].ToString();
 
             //Load AVG Score
-            SqlDataAdapter da2 = new SqlDataAdapter("select AVG(Score) from VoteScore where BookID=" + bookID, con);
+            SqlDataAdapter da2 = new SqlDataAdapter("select cast(AVG(Score) as decimal(10,2)) as 'Average Score' from VoteScore where BookID=" + bookID, con);
             DataTable tb2 = new DataTable();
             da2.Fill(tb2);
             lblScore.Text = tb2.Rows[0][0].ToString();
@@ -68,11 +68,18 @@ namespace PRN292_Project
                 DropDownList1.SelectedValue = tb3.Rows[0][0].ToString();
             }
             //Load Comment            
-            SqlDataAdapter da4 = new SqlDataAdapter("select * from Comment where BookID=" + bookID, con);
+            SqlDataAdapter da4 = new SqlDataAdapter("select * from Comment where BookID=" + bookID + " order by CommentID desc", con);
             DataTable tb4 = new DataTable();
             da4.Fill(tb4);
             GridViewComment.DataSource = tb4;
             GridViewComment.DataBind();
+
+            //Load Chapter
+            SqlDataAdapter da5 = new SqlDataAdapter("select * from Chapter where BookID=" + bookID, con);
+            DataTable tb5 = new DataTable();
+            da5.Fill(tb5);
+            GridViewChapter.DataSource = tb5;
+            GridViewChapter.DataBind();
 
         }
 
@@ -142,6 +149,7 @@ namespace PRN292_Project
         }
         protected string GetCategoryData()
         {
+            string bookID = Request.QueryString["bookid"];
             String result = "";
             //Create SQL Connection to Server
             SqlConnection myConnection = new SqlConnection(connStr);
@@ -149,12 +157,12 @@ namespace PRN292_Project
 
             try
             {
-                SqlCommand myCommand = new SqlCommand("select CategoryName from  Category C INNER JOIN Book_Category B on C.CategoryID=B.CategoryID INNER JOIN BOOK A on B.BookID=A.BookID", myConnection);
+                SqlCommand myCommand = new SqlCommand("select CategoryName from  Category C INNER JOIN Book_Category B on C.CategoryID=B.CategoryID INNER JOIN BOOK A on B.BookID=A.BookID where A.BookID = '"+bookID+"'", myConnection);
                 myConnection.Open();
 
                 SqlDataReader reader = myCommand.ExecuteReader();
                 List<string> str = new List<string>();
-                int i = 0;
+               // int i = 0;
                 while (reader.Read())
                 {
                     str.Add(reader.GetValue(0).ToString());
@@ -253,6 +261,7 @@ namespace PRN292_Project
             cmd.ExecuteNonQuery();
             con.Close();
             load_data();
+            TextBox1.Text = "";
         }
 
         protected void GridViewComment_RowDataBound(object sender, GridViewRowEventArgs e)

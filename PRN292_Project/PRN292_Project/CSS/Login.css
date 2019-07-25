@@ -6,6 +6,10 @@
    padding-bottom:20px;
 }
 
+td{
+    border:none;
+}
+
 .container{
     width: 70%;
 	height: 70%;

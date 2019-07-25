@@ -1,5 +1,4 @@
 ﻿body {
-    color:white;
 }
 
 .container{
@@ -16,10 +15,7 @@
 	margin: auto;
 }
 
-.gridview{
-    width: 100%;
-    height:auto;
-}
+
 
 
 .categotylink{

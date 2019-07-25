@@ -24,7 +24,7 @@ namespace PRN292_Project
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(connStr);
-            SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,s.[Average Score] " +
+            SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,cast(s.[Average Score] as decimal(10,2)) as 'Average Score' " +
 "from Book b, ( " +
 "select b.BookID, AVG(Score) as 'Average Score' " +
 "from Book b full outer join VoteScore v " +
@@ -52,7 +52,7 @@ namespace PRN292_Project
         private void load_data()
         {
             SqlConnection con = new SqlConnection(connStr);
-            SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,s.[Average Score] " +
+            SqlDataAdapter da = new SqlDataAdapter("select b.BookID,b.Title,cast(s.[Average Score] as decimal(10,2)) as 'Average Score' " +
 "from Book b, ( " +
 "select b.BookID, AVG(Score) as 'Average Score' "+
 "from Book b full outer join VoteScore v " + 
@@ -75,9 +75,6 @@ namespace PRN292_Project
             Response.Redirect("frmLogin.aspx");
         }
 
-        protected void btnCategory_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frmUserCategoryList.aspx");
-        }
+        
     }
 }

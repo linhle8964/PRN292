@@ -56,6 +56,7 @@
     <Content Include="CSS\Login.css" />
     <Content Include="CSS\Style.css" />
     <Content Include="CSS\UserHome.css" />
+    <Content Include="footer.html" />
     <Content Include="frmAdminBook.aspx" />
     <Content Include="frmAdminBookAdd.aspx" />
     <Content Include="frmAdminBookEdit.aspx" />

@@ -5,19 +5,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" runat="server" media="screen" href="~/css/styles.css" />
+    <link rel="stylesheet" runat="server" media="screen" href="/CSS/Style.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="height: 286px">
     
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="lblUsername" runat="server"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Log out" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <br />
-        <br />
+     <div class="wrap">
+                <div class="header">
+                    <h1>Typemoon</h1>
+                    <span>Welcome to this website</span>
+
+                </div>
+                <div class="menu">
+                    <a class="active">Home</a>
+                    <a href="frmUserCategoryList.aspx">Category</a>
+                    <div class="float-right">
+                        <asp:Label ID="lblUsername" runat="server" CssClass="username"></asp:Label>
+                        <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Log out" CssClass="button-logout" />
+                    </div>
+                </div>
     
         <asp:Button ID="btnAddBook" runat="server" OnClick="btnAddBook_Click" Text="Add Book" />
         <br />

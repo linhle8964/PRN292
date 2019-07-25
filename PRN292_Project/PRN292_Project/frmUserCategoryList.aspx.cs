@@ -52,5 +52,12 @@ namespace PRN292_Project
             Session.RemoveAll();
             Response.Redirect("frmLogin.aspx");
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            load_data();
+        }
+
     }
 }

@@ -5,8 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" runat="server" media="screen" href="/CSS/Style.css" />
     <link rel="stylesheet" runat="server" media="screen" href="/CSS/Login.css" />
+    <link rel="stylesheet" runat="server" media="screen" href="/CSS/Style.css" />
+    
     <style type="text/css">
         .auto-style1 {
             width: 480px;
@@ -21,7 +22,7 @@
     <div class="container">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div class="title">Book Reading Website</div>
-        <table style="width: 100%; height: 129px; background-color:#ffffcc" class="table" >
+        <table style="width: 100%; height: 129px; background-color:#ffffcc" >
             <tr>
                 <td>
                     <asp:Label ID="Label2" runat="server" Text="Username"></asp:Label>
@@ -48,13 +49,6 @@
                         <asp:ListItem>User</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;</td>
-                <td class="auto-style1">
-                    &nbsp;</td>
                 
             </tr>
             <tr>

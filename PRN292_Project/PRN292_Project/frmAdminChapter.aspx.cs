@@ -31,7 +31,7 @@ namespace PRN292_Project
 
             SqlConnection con = new SqlConnection(connStr);
 
-            SqlCommand cmd = new SqlCommand("select * from Book where BookID = " + bookID, con);
+            SqlCommand cmd = new SqlCommand("select * from Book where BookID=" + bookID, con);
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             try
@@ -62,7 +62,7 @@ namespace PRN292_Project
         protected void btnAddChapter_Click(object sender, EventArgs e)
         {
             string bookID = lblBookID.Text;
-            Response.Redirect("frmAdminChapterAdd.aspx?id=" + bookID);
+            Response.Redirect("frmAdminChapterAdd.aspx?bookid=" + bookID);
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
